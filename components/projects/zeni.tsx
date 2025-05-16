@@ -131,16 +131,15 @@ export default function ZeniProject() {
     <Drawer open={open} onOpenChange={setOpen}>
       <DrawerTrigger>
         <Tilt rotationFactor={2} isRevese className="w-full cursor-pointer">
-          <div
-            className="flex flex-col overflow-hidden border border-zinc-950/10 bg-card-gray dark:border-zinc-50/10 dark:bg-zinc-900"
-            style={{ borderRadius: 12 }}
-          >
-            <img
-              src="/projects/zeni/thumbnail_logo.png"
-              alt="Zeni thumbnail"
-              className="w-full object-cover"
-            />
-            <div className="p-2 flex flex-col items-center justify-center w-full">
+          <div className="h-[340px] relative group flex flex-col overflow-hidden border border-zinc-950/10 rounded-xl">
+            <div className="h-[270px] overflow-hidden">
+              <img
+                src="/projects/zeni/thumbnail_logo.png"
+                alt="Zeni thumbnail"
+                className="w-full object-cover group-hover:scale-110 transition-all duration-500"
+              />
+            </div>
+            <div className="bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-neutral-800 via-neutral-900 to-neutral-950 z-50 h-[70px] absolute bottom-0 left-0 p-2 flex flex-col items-center justify-center w-full">
               <p className="text-zinc-400">
                 Your money, your journey, your Zeni
               </p>
