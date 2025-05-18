@@ -8,6 +8,7 @@ import { RiNextjsFill, RiTailwindCssFill } from "react-icons/ri";
 import { BiLogoTypescript } from "react-icons/bi";
 import { SiShadcnui } from "react-icons/si";
 import { FaChartBar, FaLocationArrow } from "react-icons/fa";
+import { SiDrizzle } from "react-icons/si";
 
 import {
   Drawer,
@@ -24,6 +25,7 @@ import CTAButton from "../cta_button";
 import { InViewImagesGrid } from "./InViewImageGrids";
 import ProjectFooter from "./footer";
 import { SpinningText } from "../motion-primitives/spinning-text";
+import Image from "next/image";
 
 export default function ZeniProject() {
   const [scroller, setScroller] = useState<HTMLDivElement | null>(null);
@@ -131,19 +133,19 @@ export default function ZeniProject() {
     <Drawer open={open} onOpenChange={setOpen}>
       <DrawerTrigger>
         <Tilt rotationFactor={2} isRevese className="w-full cursor-pointer">
-          <div className="h-[340px] relative group flex flex-col overflow-hidden border border-zinc-950/10 rounded-xl">
-            <div className="h-[270px] overflow-hidden">
+          <div className="relative group flex flex-col overflow-hidden border border-zinc-950/10 rounded-xl">
+            <div className="overflow-hidden">
               <img
                 src="/projects/zeni/thumbnail_logo.png"
                 alt="Zeni thumbnail"
                 className="w-full object-cover group-hover:scale-110 transition-all duration-500"
               />
             </div>
-            <div className="bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-neutral-800 via-neutral-900 to-neutral-950 z-50 h-[70px] absolute bottom-0 left-0 p-2 flex flex-col items-center justify-center w-full">
-              <p className="text-zinc-400">
+            <div className="bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-neutral-800 via-neutral-900 to-neutral-950 z-50 h-[70px] p-2 flex flex-col items-center justify-center w-full">
+              <p className="text-zinc-400 md:text-base text-sm">
                 Your money, your journey, your Zeni
               </p>
-              <h1 className="flex items-center gap-2 font-mono text-xl leading-snug text-zinc-50">
+              <h1 className="flex items-center gap-2 font-mono text-lg md:text-xl leading-snug text-zinc-50">
                 <TbTargetArrow />
                 <span>Zeni</span>
               </h1>
@@ -199,7 +201,7 @@ export default function ZeniProject() {
                   </defs>{" "}
                 </svg>
                 <TextReveal animateOnScroll={false} delay={0}>
-                  <div className="text-6xl flex items-end">
+                  <div className="text-5xl md:text-6xl flex items-end">
                     <span>Zeni</span>
                     <span className="ml-2 text-lg text-gray-400 font-normal tracking-[0.05rem]">
                       project
@@ -222,7 +224,7 @@ export default function ZeniProject() {
             />
           </DrawerTitle>
 
-          <DrawerHeader className="grid grid-cols-2 gap-14 mt-8 relative">
+          <DrawerHeader className="flex flex-col md:grid md:grid-cols-2 gap-14 mt-8 relative !text-left">
             <div className="absolute right-8 -bottom-12">
               <div
                 className="relative inline-block"
@@ -264,6 +266,7 @@ export default function ZeniProject() {
               <div className="mt-20">
                 <p className="text-gray-400">Tech Stack</p>
                 <div className="mt-1 ml-3 flex flex-col gap-1 text-gray-300">
+                  <span className="text-gray-300">Frontend:</span>
                   <span className="flex items-center gap-1">
                     <RiNextjsFill className="h-5 w-5" /> Next.js 15 (App Router)
                   </span>
@@ -279,14 +282,36 @@ export default function ZeniProject() {
                   <span className="flex items-center gap-1">
                     <FaChartBar className="h-5 w-5" /> Chart.js
                   </span>
+                  <span className="text-gray-300 mt-4">Backend:</span>
+                  <span className="flex items-center gap-1">
+                    <Image
+                      src={"/projects/zeni/neon.jpeg"}
+                      alt="Neon logo"
+                      width={30}
+                      height={30}
+                    />{" "}
+                    Neon db
+                  </span>
+                  <span className="flex items-center gap-1">
+                    <SiDrizzle className="h-5 w-5" /> Drizzle ORM
+                  </span>
+                  <span className="flex items-center gap-1">
+                    <Image
+                      src={"/projects/zeni/Upstash.png"}
+                      alt="Upstash logo"
+                      width={30}
+                      height={30}
+                    />{" "}
+                    Upstash
+                  </span>
                 </div>
               </div>
             </div>
 
-            <div className="pr-16">
+            <div className="md:pr-16 pr-0 order-first ml-4 md:ml-0 md:order-none">
               <p className="text-gray-400">Description</p>
               <TextReveal animateOnScroll={false} delay={0.35}>
-                <div className="mt-1 flex flex-col gap-2 text-white text-lg">
+                <div className="mt-1 flex flex-col gap-2 text-white md:text-lg">
                   <p>
                     <span className="italic text-xl">Zeni</span> is a modern
                     expense management app built to make budgeting smarter, not
@@ -311,7 +336,7 @@ export default function ZeniProject() {
           </DrawerHeader>
 
           <div className="sticky-cards flex justify-center items-center w-full h-dvh -mt-28">
-            <div className="cards-container relative w-[50%] h-[50%] overflow-hidden rounded-xl">
+            <div className="cards-container relative md:w-[50%] w-[95%] h-[50%] overflow-hidden rounded-xl">
               {[
                 "thumbnail_logo",
                 "dashboard",
@@ -383,7 +408,7 @@ export default function ZeniProject() {
                 </defs>{" "}
               </svg>
               <TextReveal animateOnScroll={false} delay={0}>
-                <div className="text-5xl flex items-end">
+                <div className="text-4xl md:text-5xl flex items-end">
                   <span>Chatbot interactions</span>
                 </div>
               </TextReveal>

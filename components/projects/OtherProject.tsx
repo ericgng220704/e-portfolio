@@ -95,17 +95,17 @@ export default function OtherProject({
     <Drawer open={open} onOpenChange={setOpen}>
       <DrawerTrigger>
         <Tilt rotationFactor={2} isRevese className="w-full cursor-pointer">
-          <div className="h-[340px] relative group flex flex-col overflow-hidden border border-zinc-950/10 rounded-xl">
-            <div className="h-[270px] overflow-hidden">
+          <div className="relative group flex flex-col overflow-hidden border border-zinc-950/10 rounded-xl">
+            <div className="overflow-hidden">
               <img
                 src={imgLink}
                 alt="Zeni thumbnail"
                 className="w-full object-cover group-hover:scale-105 transition-all duration-500"
               />
             </div>
-            <div className="bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-neutral-800 via-neutral-900 to-neutral-950 z-50 h-[70px] absolute bottom-0 left-0 p-2 flex flex-col items-center justify-center w-full">
-              <p className="text-zinc-400">{shortDes}</p>
-              <h1 className="flex items-center gap-2 font-mono text-xl leading-snug text-zinc-50">
+            <div className="bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-neutral-800 via-neutral-900 to-neutral-950 z-50 p-2 flex flex-col items-center justify-center w-full">
+              <p className="text-zinc-400 md:text-base text-sm">{shortDes}</p>
+              <h1 className="flex items-center gap-2 font-mono text-lg md:text-xl leading-snug text-zinc-50">
                 <TbTargetArrow />
                 <span>{title}</span>
               </h1>
@@ -119,7 +119,7 @@ export default function OtherProject({
           className="h-[85dvh] overflow-y-auto bg-card-gray"
           ref={setScroller}
         >
-          <DrawerTitle className="flex items-center justify-between mx-8">
+          <DrawerTitle className="flex md:items-center gap-4 justify-between md:flex-row flex-col mx-8">
             <div>
               <div className="flex items-center gap-2">
                 <svg
@@ -161,7 +161,7 @@ export default function OtherProject({
                   </defs>{" "}
                 </svg>
                 <TextReveal animateOnScroll={false} delay={0}>
-                  <div className="text-6xl flex items-end">
+                  <div className="text-5xl md:text-6xl flex items-end">
                     <span>{title}</span>
                     <span className="ml-2 text-lg text-gray-400 font-normal tracking-[0.05rem]">
                       project
@@ -191,7 +191,7 @@ export default function OtherProject({
             )}
           </DrawerTitle>
 
-          <DrawerHeader className="grid grid-cols-2 gap-14 mt-8 relative">
+          <DrawerHeader className="flex flex-col lg:grid lg:grid-cols-2 gap-14 mt-8 relative text-left">
             <div className="absolute right-8 -bottom-28">
               <div
                 className="relative inline-block"
@@ -224,10 +224,10 @@ export default function OtherProject({
               </TextReveal>
             </div>
 
-            <div className="pl-[30%]">
+            <div className="lg:pl-[30%] ml-4 lg:ml-0">
               <p className="text-gray-400 mb-2 self-center">Tags</p>
               <TextReveal animateOnScroll={false} delay={0.35}>
-                <div className="mt-1 flex flex-col gap-2 text-white text-lg">
+                <div className="mt-1 flex flex-row flex-wrap lg:flex-col gap-2 text-white text-lg">
                   {hashTags.map((tag, i) => (
                     <p
                       key={i + tag}

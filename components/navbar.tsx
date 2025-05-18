@@ -51,7 +51,7 @@ export default function NavBar() {
       className="fixed inset-x-0 top-4 z-50 h-16 border-none transition-all duration-700 sm:inset-x-6"
     >
       <header className="absolute top-1/2 w-full -translate-y-1/2">
-        <nav className="flex size-full items-center justify-between md:px-16 lg:px-40">
+        <nav className="flex size-full items-center justify-between px-4 md:px-16 lg:px-40">
           {/* Logo and Product button */}
           <div className="flex size-full items-center justify-between bg-gray-50 text-black px-4 py-2 rounded-2xl">
             <div className="flex items-center gap-4">
@@ -64,7 +64,7 @@ export default function NavBar() {
 
             {/* Navigation Links and Audio Button */}
             <div className="flex h-full items-center ">
-              <div className="hidden md:block mr-5">
+              <div className="block mr-5 [@media(max-width:500px)]:hidden">
                 {navItems.map((item, index) => (
                   <Link
                     key={index}
@@ -86,7 +86,7 @@ export default function NavBar() {
                 id="product-button"
                 title="Contact me"
                 rightIcon={<TiLocationArrow />}
-                containerClass="!bg-black/85 text-white md:flex hidden items-center justify-center gap-1 border border-1"
+                containerClass="!bg-black/85 text-white flex items-center justify-center gap-1 border border-1"
               />
             </div>
           </div>

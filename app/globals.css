@@ -123,6 +123,56 @@
       "box-1 box-3 box-4"
       "box-5 box-5 box-4";
   }
+
+  @media (min-width: 1824px) {
+    .hero-bento-box {
+      grid-auto-columns: 300px auto 500px;
+      grid-template-rows: 300px 227px 200px;
+      gap: 0.75rem;
+      grid-template-areas:
+        "box-1 box-2 box-4"
+        "box-1 box-3 box-4"
+        "box-5 box-5 box-4";
+    }
+  }
+
+  @media (max-width: 1300px) {
+    .hero-bento-box {
+      grid-auto-columns: 300px auto auto auto;
+      grid-template-rows: 300px 230px 300px 200px;
+      gap: 0.75rem;
+      grid-template-areas:
+        "box-2 box-2 box-2 box-2"
+        "box-1 box-3 box-3 box-3"
+        "box-1 box-4 box-4 box-4"
+        "box-5 box-5 box-5 box-5";
+    }
+  }
+
+  @media (max-width: 650px) {
+    .hero-bento-box {
+      grid-auto-columns: auto;
+      grid-template-rows: 350px auto 230px 180px 300px;
+      gap: 0.75rem;
+      grid-template-areas:
+        "box-2"
+        "box-1"
+        "box-3"
+        "box-5"
+        "box-4";
+    }
+  }
+
+  @media (max-width: 500px) {
+    .hero-bento-box {
+      grid-template-rows: 400px auto 230px 180px 300px;
+    }
+  }
+  @media (max-width: 400px) {
+    .hero-bento-box {
+      grid-template-rows: 450px auto 230px 180px 300px;
+    }
+  }
 }
 
 @layer base {

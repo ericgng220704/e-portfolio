@@ -22,23 +22,28 @@ import { TiLocationArrow } from "react-icons/ti";
 import { InfiniteSlider } from "./motion-primitives/infinite-slider";
 import { ProgressiveBlur } from "./motion-primitives/progressive-blur";
 import { SiNextdotjs } from "react-icons/si";
-import { FaReact } from "react-icons/fa6";
+import { FaDownload, FaReact } from "react-icons/fa6";
 import { BiLogoPostgresql } from "react-icons/bi";
 import { RiTailwindCssFill } from "react-icons/ri";
 import { BiLogoTypescript } from "react-icons/bi";
 import { FaCity } from "react-icons/fa";
-
+import { useAnimation } from "motion/react";
 import React, { JSX, useEffect, useState } from "react";
 import { SlidingNumber } from "./motion-primitives/sliding-number";
+import { Sparkles } from "./ui/animated-sparkle";
+import { FaFacebook } from "react-icons/fa";
+import { IoIosMail } from "react-icons/io";
 
 export default function Hero() {
+  const sparklesControls = useAnimation();
+
   return (
-    <section className={cn("md:px-16 lg:px-36 w-full", "hero-bento-box")}>
+    <section className={cn("px-4 md:px-16 lg:px-36 w-full", "hero-bento-box")}>
       <div
         style={{
           gridArea: "box-1",
         }}
-        className="flex flex-col justify-between gap-3"
+        className="flex flex-col justify-between gap-3 [@media(max-width:650px)]:flex-row [@media(max-width:500px)]:!flex-col [@media(max-width:500px)]:!items-center  [@media(max-width:650px)]:justify-normal "
       >
         <div>
           <Tilt
@@ -72,12 +77,26 @@ export default function Hero() {
             />
           </Tilt>
         </div>
-        <div className="h-full flex flex-col justify-between gap-3">
-          <Card className="h-full w-full text-white flex items-center justify-between px-4">
-            <div className="flex items-center gap-1 text-gray-500 text-lg">
+        <div className="h-full flex flex-col justify-between gap-3 [@media(max-width:650px)]:grow min-w-min [@media(max-width:500px)]:!w-full">
+          <div className="w-full h-full overflow-hidden [@media(max-width:500px)]:hidden [@media(min-width:650px)]:hidden block rounded-lg">
+            <Blockquote className="text-base size-full">
+              Hey, you’ve hit the sweet spot between 500 px and 650 px—nice! 🎉
+            </Blockquote>
+          </div>
+
+          <Card className="h-full w-full text-white flex items-center justify-between px-4 relative max-h-16 min-h-12">
+            <div className="flex items-center gap-1 text-white text-lg z-20">
               <FaCity />
               <span>Winnipeg :</span>
             </div>
+
+            <div className="absolute top-0 left-0 size-full bg-black/50 z-10"></div>
+
+            <img
+              src={"/winnipeg.jpg"}
+              alt="winnipeg city"
+              className="absolute top-0 left-0 size-full object-cover filter blur-[1.2px]"
+            />
 
             <LiveClock />
           </Card>
@@ -92,7 +111,7 @@ export default function Hero() {
         </div>
       </div>
       <Card
-        className="max-h-[20rem] group"
+        className="max-h-[20rem] [@media(max-width:650px)]:max-h-max group"
         style={{
           gridArea: "box-2",
         }}
@@ -107,14 +126,55 @@ export default function Hero() {
           }}
         />
         <CardHeader className="group-hover:!text-white transition-colors duration-500">
-          <TextReveal>
-            <CardTitle className="font-bold text-4xl md:text-5xl lg:text-5xl text-white flex flex-col gap-3 mb-20 group-hover:!text-white transition-colors duration-500">
-              <div>
-                <span>I'm Eric Nguyen</span>
-                <span></span>
-              </div>
-            </CardTitle>
-          </TextReveal>
+          <div className="flex w-full items-start justify-between">
+            <TextReveal>
+              <CardTitle className="font-bold text-4xl md:text-5xl lg:text-5xl text-white flex flex-col gap-3 mb-20 group-hover:!text-white transition-colors duration-500">
+                <div>
+                  <span>I'm Eric Nguyen</span>
+                </div>
+              </CardTitle>
+            </TextReveal>
+
+            <div>
+              <svg
+                width="40"
+                height="40"
+                viewBox="0 0 200 200"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                {" "}
+                <g clipPath="url(#clip0_231_793)">
+                  {" "}
+                  <path
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M50 0H200V50V150L150 200L150 50H0L50 0ZM0 165.067V100L65.067 100L0 165.067ZM100 200H35.7777L100 135.778L100 200Z"
+                    fill="url(#paint0_linear_231_793)"
+                  />{" "}
+                </g>{" "}
+                <defs>
+                  {" "}
+                  <linearGradient
+                    id="paint0_linear_231_793"
+                    x1="177"
+                    y1="-9.23648e-06"
+                    x2="39.5"
+                    y2="152.5"
+                    gradientUnits="userSpaceOnUse"
+                  >
+                    {" "}
+                    <stop stopColor="#B0B9FF" />{" "}
+                    <stop offset="1" stopColor="#E7E9FF" />{" "}
+                  </linearGradient>{" "}
+                  <clipPath id="clip0_231_793">
+                    {" "}
+                    <rect width="200" height="200" fill="white" />{" "}
+                  </clipPath>{" "}
+                </defs>{" "}
+              </svg>
+            </div>
+          </div>
 
           <CardDescription className="text-gray-400 text-base font-normal group-hover:!text-white transition-colors duration-500">
             <span>
@@ -145,13 +205,17 @@ export default function Hero() {
               mass: 0.2,
             }}
           />
-          <CardHeader className="z-10">
+          <CardHeader
+            className="z-10"
+            onMouseEnter={() => sparklesControls.start("animate")}
+            onMouseLeave={() => sparklesControls.start("normal")}
+          >
             <CardTitle className="font-bold text-3xl md:text-4xl lg:text-4xl text-gray-200 group-hover:!text-white flex flex-col gap-3 mb-6 transition-colors duration-500">
               <TextReveal>
                 <div className="flex items-center justify-between">
                   <span>SKILLS</span>
                   <span>
-                    <RiSparkling2Fill />
+                    <Sparkles controls={sparklesControls} />
                   </span>
                 </div>
               </TextReveal>
@@ -183,28 +247,28 @@ export default function Hero() {
         />
         <CardContent className="flex flex-col !p-0 !m-0 h-full gap-2">
           <div className="flex items-center gap-2 h-1/3">
-            <div className="flex items-center justify-center h-full w-1/2 rounded-2xl flex-col border border-gray-200">
+            <div className="link-box flex items-center justify-center h-full w-1/2 rounded-2xl flex-col border border-gray-200">
               <span className="text-4xl font-bold text-gray-200">LIN</span>
               <span className="text-4xl font-bold text-gray-200">KS:</span>
             </div>
-            <div className="flex items-center justify-center  bg-gray-200/80 h-full w-1/2 rounded-2xl hover:bg-transparent hover:text-white transition-all duration-500">
+            <div className="cursor-pointer link-box flex items-center justify-center bg-gradient-to-bl from-[#B0B9FF]  to-[#E7E9FF] h-full w-1/2 rounded-2xl hover:!bg-transparent  hover:text-white transition-all duration-500">
               <IoLogoGithub className="w-10 h-10" />
             </div>
           </div>
-          <div className="flex items-center gap-2 h-1/3">
-            <div className="flex items-center justify-center bg-gray-200/80 h-full w-1/2 rounded-2xl hover:bg-transparent hover:text-white transition-all duration-500">
+          <div className="cursor-pointer link-box flex items-center gap-2 h-1/3">
+            <div className="flex items-center justify-center bg-[#E7E9FF] h-full w-1/2 rounded-2xl hover:bg-transparent hover:text-white transition-all duration-500">
               <FaLinkedinIn className="w-10 h-10" />
             </div>
-            <div className="flex items-center justify-center  bg-gray-200/80 h-full w-1/2 rounded-2xl hover:bg-transparent hover:text-white transition-all duration-500">
-              <FaLinkedinIn className="w-10 h-10" />
+            <div className="cursor-pointer link-box flex items-center justify-center  bg-[#E7E9FF] h-full w-1/2 rounded-2xl hover:bg-transparent hover:text-white transition-all duration-500">
+              <FaFacebook className="w-10 h-10" />
             </div>
           </div>
-          <div className="flex items-center gap-2 h-1/3">
-            <div className="flex items-center justify-center bg-gray-200/80 h-full w-1/2 rounded-2xl hover:bg-transparent hover:text-white transition-all duration-500">
-              <FaLinkedinIn className="w-10 h-10" />
+          <div className="cursor-pointer link-box flex items-center gap-2 h-1/3">
+            <div className="flex items-center justify-center bg-gradient-to-tr from-[#B0B9FF]  to-[#E7E9FF] h-full w-1/2 rounded-2xl hover:bg-transparent hover:text-white transition-all duration-500">
+              <IoIosMail className="w-10 h-10" />
             </div>
-            <div className="flex items-center justify-center  bg-gray-200/80 h-full w-1/2 rounded-2xl hover:bg-transparent hover:text-white transition-all duration-500">
-              <FaLinkedinIn className="w-10 h-10" />
+            <div className="cursor-pointer link-box flex items-center justify-center  bg-[#B0B9FF]  h-full w-1/2 rounded-2xl hover:bg-transparent hover:text-white transition-all duration-500">
+              <FaDownload className="w-10 h-10" />
             </div>
           </div>
         </CardContent>
@@ -283,9 +347,9 @@ function LiveClock() {
   }, []);
 
   return (
-    <div className="flex items-center gap-0.5 font-mono text-xl">
+    <div className="flex items-center gap-0.5 font-mono text-xl z-20">
       <SlidingNumber value={hours} padStart />
-      <span className="text-zinc-500">:</span>
+      <span className="text-white">:</span>
       <SlidingNumber value={minutes} padStart />
     </div>
   );
@@ -315,3 +379,36 @@ function InfiniteSliderHoverSpeed(): JSX.Element {
     </InfiniteSlider>
   );
 }
+
+type BlockquoteProps = {
+  children?: React.ReactNode;
+  className?: string;
+};
+
+const Blockquote = ({ children, className }: BlockquoteProps) => {
+  return (
+    <div
+      className={cn(
+        "relative rounded-lg border-l-8 border-l-gray-700 bg-gray-100 py-5 pl-16 pr-5 font-sans text-lg italic leading-relaxed text-gray-500 before:absolute before:left-3 before:top-3 before:font-serif before:text-6xl before:text-gray-700 before:content-['“']",
+        className
+      )}
+    >
+      {children}
+    </div>
+  );
+};
+
+const BlockquoteAuthor = ({ children, className }: BlockquoteProps) => {
+  return (
+    <p
+      className={cn(
+        "mt-5 pr-4 text-right font-bold not-italic text-gray-700",
+        className
+      )}
+    >
+      {children}
+    </p>
+  );
+};
+
+export { Blockquote, BlockquoteAuthor };

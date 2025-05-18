@@ -8,7 +8,7 @@ import { RiNextjsFill, RiTailwindCssFill } from "react-icons/ri";
 import { BiLogoTypescript } from "react-icons/bi";
 import { SiShadcnui } from "react-icons/si";
 import { FaChartBar, FaLocationArrow } from "react-icons/fa";
-
+import { FaPlay } from "react-icons/fa";
 import {
   Drawer,
   DrawerTrigger,
@@ -31,6 +31,21 @@ export default function ZeniLandingProject() {
   const [open, setOpen] = useState(false);
 
   const vidRef = useRef<HTMLDivElement>(null);
+
+  const videoMobileRef = useRef<HTMLVideoElement>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const handleClick = () => {
+    const video = videoMobileRef.current;
+    if (!video) return;
+    if (video.paused) {
+      video.play();
+      setIsPlaying(true);
+    } else {
+      video.pause();
+      setIsPlaying(false);
+    }
+  };
 
   useEffect(() => {
     if (!open || !scroller) return;
@@ -91,7 +106,6 @@ export default function ZeniLandingProject() {
           end: `+=${window.innerHeight + 700}`,
           scrub: true,
           pin: true,
-          markers: true,
         },
       });
 
@@ -106,32 +120,22 @@ export default function ZeniLandingProject() {
       <DrawerTrigger>
         <Tilt rotationFactor={2} isRevese className="w-full cursor-pointer">
           <div
-            className="h-[350px] relative flex flex-col overflow-hidden border rounded-xl border-zinc-950/10 bg-card-gray dark:border-zinc-50/10 dark:bg-zinc-900"
+            className="group flex flex-col overflow-hidden border rounded-xl border-zinc-950/10 bg-card-gray dark:border-zinc-50/10 dark:bg-zinc-900"
             onMouseEnter={() => setMouseEnter(true)}
             onMouseLeave={() => setMouseEnter(false)}
           >
-            <div className="h-[270px] overflow-hidden">
-              {mouseEnter ? (
-                <video
-                  muted
-                  autoPlay
-                  loop
-                  src={"/projects/zeni_landing_page/demo.mp4"}
-                  className="w-full h-full object-cover"
-                />
-              ) : (
-                <img
-                  src="/projects/zeni_landing_page/hero.png"
-                  alt="Zeni thumbnail"
-                  className="w-full object-cover"
-                />
-              )}
+            <div className="overflow-hidden">
+              <img
+                src="/projects/zeni_landing_page/hero.png"
+                alt="Zeni thumbnail"
+                className="w-full object-cover  group-hover:scale-105 transition-all duration-500"
+              />
             </div>
-            <div className="bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-neutral-800 via-neutral-900 to-neutral-950 z-50 h-[70px] absolute bottom-0 left-0 p-2 flex flex-col items-center justify-center w-full">
-              <p className="text-zinc-400">
+            <div className="bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-neutral-800 via-neutral-900 to-neutral-950 z-50  p-2 flex flex-col items-center justify-center w-full">
+              <p className="text-zinc-400 md:text-base text-sm">
                 Your money, your journey, your Zeni
               </p>
-              <h1 className="flex items-center gap-2 font-mono text-xl leading-snug text-zinc-50">
+              <h1 className="flex items-center gap-2 font-mono text-lg md:text-xl leading-snug text-zinc-50">
                 <TbTargetArrow />
                 <span>Zeni—Landing page</span>
               </h1>
@@ -187,7 +191,7 @@ export default function ZeniLandingProject() {
                   </defs>{" "}
                 </svg>
                 <TextReveal animateOnScroll={false} delay={0}>
-                  <div className="text-6xl flex items-end">
+                  <div className="text-5xl md:text-6xl flex items-end">
                     <span>Zeni</span>
                     <span className="ml-2 text-lg text-gray-400 font-normal tracking-[0.05rem]">
                       landing page
@@ -211,25 +215,12 @@ export default function ZeniLandingProject() {
             />
           </DrawerTitle>
 
-          <DrawerHeader className="grid grid-cols-5 gap-14 mt-8 relative">
-            <div className="col-span-3 ml-4">
-              <p className="text-gray-400">Why I built the landing page?</p>
-              <TextReveal animateOnScroll={false} delay={0.35}>
-                <p className="mt-1 text-gray-100">
-                  A great app deserves a great introduction. I created the Zeni
-                  landing page to capture that first moment — the spark. With
-                  GSAP-driven animations, smooth transitions, and a responsive
-                  layout, the page brings Zeni’s identity to life before users
-                  ever sign in. I wanted it to feel alive, thoughtful, and
-                  inviting — because finance tools should feel as good as they
-                  are functional.
-                </p>
-              </TextReveal>
-
-              <div className="pr-16 mt-16">
+          <DrawerHeader className="flex flex-col lg:grid lg:grid-cols-5 gap-14 mt-8 relative !text-left">
+            <div className="col-span-3 ml-4 flex flex-col">
+              <div className="lg:pr-16">
                 <p className="text-gray-400">Description</p>
                 <TextReveal animateOnScroll={false} delay={0.35}>
-                  <div className="mt-1 flex flex-col gap-2 text-white text-lg">
+                  <div className="mt-1 flex flex-col gap-2 text-white text-base md:text-lg">
                     <p>
                       <span className="italic text-xl">
                         The Zeni landing page{" "}
@@ -249,6 +240,21 @@ export default function ZeniLandingProject() {
                 </TextReveal>
               </div>
 
+              <div className="mt-16">
+                <p className="text-gray-400">Why I built the landing page?</p>
+                <TextReveal animateOnScroll={false} delay={0.35}>
+                  <p className="mt-1 text-gray-100">
+                    A great app deserves a great introduction. I created the
+                    Zeni landing page to capture that first moment — the spark.
+                    With GSAP-driven animations, smooth transitions, and a
+                    responsive layout, the page brings Zeni’s identity to life
+                    before users ever sign in. I wanted it to feel alive,
+                    thoughtful, and inviting — because finance tools should feel
+                    as good as they are functional.
+                  </p>
+                </TextReveal>
+              </div>
+
               <div className="mt-20">
                 <p className="text-gray-400">Tech Stack</p>
                 <div className="mt-1 ml-3 flex flex-col gap-1 text-gray-300">
@@ -262,15 +268,27 @@ export default function ZeniLandingProject() {
                     <RiTailwindCssFill className="h-5 w-5" /> Tailwind CSS
                   </span>
                   <span className="flex items-center gap-1">
-                    <SiShadcnui className="h-5 w-5" /> Shadcn/UI
+                    <Image
+                      src={"/projects/zeni_landing_page/spline.png"}
+                      alt="Spline logo"
+                      height={20}
+                      width={20}
+                    />{" "}
+                    Spline
                   </span>
                   <span className="flex items-center gap-1">
-                    <FaChartBar className="h-5 w-5" /> Chart.js
+                    <Image
+                      src={"/projects/zeni_landing_page/gsap.png"}
+                      alt="Spline logo"
+                      height={30}
+                      width={30}
+                    />{" "}
+                    GSAP
                   </span>
                 </div>
               </div>
 
-              <div className="w-full relative h-[80dvh]">
+              <div className="w-full relative lg:h-[80dvh] hidden">
                 <div
                   ref={vidRef}
                   className="vid-container w-full absolute top-0 left-1/2 -translate-x-1/2"
@@ -285,10 +303,9 @@ export default function ZeniLandingProject() {
                 </div>
               </div>
             </div>
-
             <div className="col-span-2">
               <div className="w-full flex items-center justify-center">
-                <div className="w-[650px] rounded-lg overflow-hidden">
+                <div className="lg:w-[650px] w-[80%] rounded-lg overflow-hidden">
                   <Image
                     src={"/projects/zeni_landing_page/image.png"}
                     alt="whole page image"
@@ -299,6 +316,30 @@ export default function ZeniLandingProject() {
                 </div>
               </div>
             </div>
+            <div className="w-full relative h-[50dvh] lg:hidden">
+              <div
+                className="w-[80%] absolute top-0 left-1/2 -translate-x-1/2"
+                style={{
+                  clipPath: "inset(10% 0 1% 1% round 5%)",
+                }}
+                onClick={handleClick}
+              >
+                <video
+                  src={"/projects/zeni_landing_page/demo.mp4"}
+                  muted
+                  loop
+                  className="w-full object-cover cursor-pointer"
+                  ref={videoMobileRef}
+                />
+                {!isPlaying && (
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <button className="bg-black p-4 rounded-full flex items-center justify-center">
+                      <FaPlay className="text-white" />
+                    </button>
+                  </div>
+                )}
+              </div>
+            </div>{" "}
           </DrawerHeader>
 
           <ProjectFooter />
