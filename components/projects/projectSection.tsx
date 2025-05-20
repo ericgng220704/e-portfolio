@@ -37,6 +37,7 @@ export default function Project() {
           title="Zentry—clone"
           titleSpinning="Zentry"
           isHosted={true}
+          demoLink="https://zentry-clone-ericgng.vercel.app/"
           imgLink="/projects/zentry/hero.png"
           shortDes="Redefine Gaming"
           description={ZentryDes}
@@ -97,6 +98,7 @@ export default function Project() {
           title="Suburbia Skate"
           titleSpinning="Skate"
           isHosted={false}
+          demoLink=""
           imgLink="/projects/suburbia/hero.png"
           shortDes="Code along"
           description={ZentryDes}

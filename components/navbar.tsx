@@ -85,6 +85,7 @@ export default function NavBar() {
               <CTAButton
                 id="product-button"
                 title="Contact me"
+                href="mailto:giahaonguyen2207@gmail.com"
                 rightIcon={<TiLocationArrow />}
                 containerClass="!bg-black/85 text-white flex items-center justify-center gap-1 border border-1"
               />

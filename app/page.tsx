@@ -36,20 +36,22 @@ export default function Home() {
         </div>
       </div> */}
       <TextReveal delay={0.4}>
-        <div className="absolute top-8 left-20 pointer-events-none">
-          <h1 className="text-2xl tracking-[1rem]">ERIC.GNG</h1>
+        <div className="absolute top-8 left-10 sm:left-20 pointer-events-none">
+          <h1 className="text-lg sm:text-xl md:text-2xl tracking-[1rem]">
+            ERIC.GNG
+          </h1>
         </div>
       </TextReveal>
-      <div className="absolute bottom-8 left-20 flex flex-col text-wrap max-w-[800px]  pointer-events-none">
+      <div className="absolute bottom-24   sm:bottom-8 left-10 sm:left-20 flex flex-col text-wrap max-w-[800px]  pointer-events-none">
         <TextReveal delay={0.5}>
           <div>
-            <span className="text-7xl text-gray-100  leading-[5.9rem]">
+            <span className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-gray-100 leading-[3rem] sm:leading-[3.8rem] lg:leading-[5.9rem]">
               Crafting digital experiences that inspire
             </span>
           </div>
         </TextReveal>
 
-        <div className="flex gap-4 mt-6">
+        <div className="flex gap-4 mt-6 ">
           <div className="border border-gray-600 p-1 rounded-xl">
             <RiNextjsFill className="w-8 h-8" />
           </div>
@@ -68,31 +70,31 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="absolute right-10 top-8 border border-gray-500 rounded-full">
+      <div className="absolute right-10 top-8 [@media(max-width:450px)]:hidden border border-gray-500 rounded-full">
         <CTAButton
           id=""
           title="Contact me"
+          href="mailto:giahaonguyen2207@gmail.com"
           rightIcon={<TiLocationArrow />}
           containerClass="flex items-center gap-2 !bg-transparent text-white"
         />
       </div>
 
-      <div className="absolute right-10 bottom-16 border border-gray-500 rounded-full bg-violet-50 ">
+      <div className="absolute [@media(max-width:639px)]:left-10  sm:right-10 bottom-8 border border-gray-500 rounded-full bg-violet-50 ">
         <PageTransitionLink
           href="/portfolio"
           className="flex items-center px-7"
         >
           <span
             className={cn(
-              "text-4xl",
               "group relative z-10 w-fit cursor-pointer overflow-hidden rounded-full px-1 py-3 text-black"
             )}
           >
             <span className="relative inline-flex self-center overflow-hidden font-general text-xs uppercase">
-              <div className="translate-y-0 skew-y-0 transition duration-500 group-hover:translate-y-[-160%] group-hover:skew-y-12 text-3xl leading-none tracking-[0.2rem]">
+              <div className="translate-y-0 skew-y-0 transition duration-500 group-hover:translate-y-[-160%] group-hover:skew-y-12 text-lg sm:text-xl lg:text-2xl xl:text-3xl leading-none tracking-[0.2rem]">
                 Portfolio
               </div>
-              <div className="absolute translate-y-[160%] skew-y-12 transition duration-500 group-hover:translate-y-0 group-hover:skew-y-0 text-3xl leading-none tracking-[0.2rem]">
+              <div className="absolute translate-y-[160%] skew-y-12 transition duration-500 group-hover:translate-y-0 group-hover:skew-y-0 text-lg sm:text-xl lg:text-2xl xl:text-3xl leading-none tracking-[0.2rem]">
                 Portfolio
               </div>
             </span>

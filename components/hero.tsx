@@ -38,7 +38,10 @@ export default function Hero() {
   const sparklesControls = useAnimation();
 
   return (
-    <section className={cn("px-4 md:px-16 lg:px-36 w-full", "hero-bento-box")}>
+    <section
+      id="about"
+      className={cn("px-4 md:px-16 lg:px-36 w-full", "hero-bento-box")}
+    >
       <div
         style={{
           gridArea: "box-1",
@@ -103,6 +106,7 @@ export default function Hero() {
           <div>
             <CTAButton
               id="cta button"
+              href="/portfolio#projects"
               containerClass="w-full flex items-center gap-1 text-2xl !px-0 font-semibold justify-center tracking-[0.3rem] !rounded-xl"
               title="Explore"
               rightIcon={<TiLocationArrow />}
@@ -251,25 +255,40 @@ export default function Hero() {
               <span className="text-4xl font-bold text-gray-200">LIN</span>
               <span className="text-4xl font-bold text-gray-200">KS:</span>
             </div>
-            <div className="cursor-pointer link-box flex items-center justify-center bg-gradient-to-bl from-[#B0B9FF]  to-[#E7E9FF] h-full w-1/2 rounded-2xl hover:!bg-transparent  hover:text-white transition-all duration-500">
+            <a
+              href="https://github.com/ericgng220704"
+              className="cursor-pointer link-box flex items-center justify-center bg-gradient-to-bl from-[#B0B9FF]  to-[#E7E9FF] h-full w-1/2 rounded-2xl hover:!bg-transparent  hover:text-white transition-all duration-500"
+            >
               <IoLogoGithub className="w-10 h-10" />
-            </div>
+            </a>
           </div>
           <div className="cursor-pointer link-box flex items-center gap-2 h-1/3">
-            <div className="flex items-center justify-center bg-[#E7E9FF] h-full w-1/2 rounded-2xl hover:bg-transparent hover:text-white transition-all duration-500">
+            <a
+              href="https://www.linkedin.com/in/eric-nguyen-953740261/"
+              className="flex items-center justify-center bg-[#E7E9FF] h-full w-1/2 rounded-2xl hover:bg-transparent hover:text-white transition-all duration-500"
+            >
               <FaLinkedinIn className="w-10 h-10" />
-            </div>
-            <div className="cursor-pointer link-box flex items-center justify-center  bg-[#E7E9FF] h-full w-1/2 rounded-2xl hover:bg-transparent hover:text-white transition-all duration-500">
+            </a>
+            <a
+              href="https://www.facebook.com/nguyengiahaoo"
+              className="cursor-pointer link-box flex items-center justify-center  bg-[#E7E9FF] h-full w-1/2 rounded-2xl hover:bg-transparent hover:text-white transition-all duration-500"
+            >
               <FaFacebook className="w-10 h-10" />
-            </div>
+            </a>
           </div>
           <div className="cursor-pointer link-box flex items-center gap-2 h-1/3">
-            <div className="flex items-center justify-center bg-gradient-to-tr from-[#B0B9FF]  to-[#E7E9FF] h-full w-1/2 rounded-2xl hover:bg-transparent hover:text-white transition-all duration-500">
+            <a
+              href="mailto:giahaonguyen2207@gmail.com"
+              className="flex items-center justify-center bg-gradient-to-tr from-[#B0B9FF]  to-[#E7E9FF] h-full w-1/2 rounded-2xl hover:bg-transparent hover:text-white transition-all duration-500"
+            >
               <IoIosMail className="w-10 h-10" />
-            </div>
-            <div className="cursor-pointer link-box flex items-center justify-center  bg-[#B0B9FF]  h-full w-1/2 rounded-2xl hover:bg-transparent hover:text-white transition-all duration-500">
+            </a>
+            <a
+              href="/Eric_Nguyen_Resume.pdf"
+              className="cursor-pointer link-box flex items-center justify-center  bg-[#B0B9FF]  h-full w-1/2 rounded-2xl hover:bg-transparent hover:text-white transition-all duration-500"
+            >
               <FaDownload className="w-10 h-10" />
-            </div>
+            </a>
           </div>
         </CardContent>
       </Card>

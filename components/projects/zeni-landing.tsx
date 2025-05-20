@@ -210,6 +210,7 @@ export default function ZeniLandingProject() {
             <CTAButton
               id="live demo"
               title="Live demo"
+              href="https://zeni-landing-page.vercel.app/"
               containerClass="flex items-center gap-2"
               rightIcon={<FaLocationArrow className="w-4 h-4" />}
             />

@@ -19,14 +19,14 @@ export default function ProjectFooter() {
           <div className="flex flex-col self-end gap-1">
             <a
               className="flex items-center gap-1 hover:text-white transition-all duration-300"
-              href=""
+              href="mailto:giahaonguyen2207@gmail.com"
             >
               <IoIosMail />
               <span>giahaonguyen2207@gmail.com</span>
             </a>
             <a
               className="flex items-center gap-1 hover:text-white transition-all duration-300"
-              href=""
+              href="/Eric_Nguyen_Resume.pdf"
             >
               <FaDownload />
               <span>Resume</span>
@@ -35,21 +35,21 @@ export default function ProjectFooter() {
           <div className="flex flex-col self-end gap-1">
             <a
               className="flex items-center gap-1 hover:text-white transition-all duration-300"
-              href=""
+              href="https://www.linkedin.com/in/eric-nguyen-953740261/"
             >
               <FiArrowUpRight />
               <span>LinkedIn</span>
             </a>
             <a
               className="flex items-center gap-1 hover:text-white transition-all duration-300"
-              href=""
+              href="https://github.com/ericgng220704"
             >
               <FiArrowUpRight />
               <span>Github</span>
             </a>
             <a
               className="flex items-center gap-1 hover:text-white transition-all duration-300"
-              href=""
+              href="https://www.facebook.com/nguyengiahaoo"
             >
               <FiArrowUpRight />
               <span>Facebook</span>
